@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+</head>
+<body bgcolor="aqua">
+<form action="{% url 'payment' %}" method="post">
+{% csrf_token %}
+<table align="center" border="3" width="300">
+  <tr>
+      <th width="200"><input type="number" placeholder="meter-number" name="mnu" required></th>
+  </tr>
+<tr><th><button type="submit">see payment</button> </th></tr>
+    {%  for x in data %}
+    <tr><th>NAME:<input type="text" name="name" value="{{ x.customer_name }}" readonly></th></tr>
+        <tr><th>TYPE<input type="text" name="type" value="{{ x.Meter_type}}" readonly></th></tr>
+        <tr><th>UNITS:<input type="number" name="unit" value="{{ x.units }}" readonly></th></tr>
+        <tr><th>TOTAL:<input type="number" name="unit" value="{{ total }}" readonly></th></tr>
+    {% endfor %}
+    <tr><th><button type="submit">Pay</button> </th></tr>
+
+</table>
+    </form>
+
+</body>
+</html>
